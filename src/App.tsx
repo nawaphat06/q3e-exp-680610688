@@ -2,6 +2,15 @@ import { AddItemDialog } from "./components/AddItemDialog";
 import { ItemList } from "./components/ItemList";
 import { Footer } from "./components/Footer";
 import { OverviewCards } from "./components/OverviewCards";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CategoryCards } from "./components/CategoryCards";
 
 export default function App() {
   return (
@@ -20,12 +29,34 @@ export default function App() {
               </p>
             </div>
             <AddItemDialog />
+            <br></br>
+          </div>
+          <div>
+            <Tabs defaultValue="overview">
+              <TabsList>
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="category">By Category</TabsTrigger>
+              </TabsList>
+              <TabsContent value="overview">
+                <OverviewCards />
+                <br></br>
+                <ItemList />
+              </TabsContent>
+              <TabsContent value="category">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>By Category</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CategoryCards />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </div>
 
           {/* Put OverviewCards and CategoryCards under DashboardTabs */}
           {/* And then use DashboardTabs here instead */}
-          <OverviewCards />
-          <ItemList />
         </div>
       </main>
 
