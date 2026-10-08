@@ -1,17 +1,3 @@
-import { XIcon } from "lucide-react";
-
-import {
-  Attachment,
-  AttachmentAction,
-  AttachmentActions,
-  AttachmentContent,
-  AttachmentDescription,
-  AttachmentGroup,
-  AttachmentMedia,
-  AttachmentTitle,
-  AttachmentTrigger,
-} from "@/components/ui/attachment";
-
 import {
   Drawer,
   DrawerClose,
@@ -24,12 +10,6 @@ import {
 } from "@/components/ui/drawer";
 import { Button } from "./ui/button";
 
-const images = [
-  {
-    src: "/pic_me.jpg",
-    alt: "picme",
-  },
-];
 export function StudentInfo() {
   return (
     // Use Drawer component to display student information
@@ -43,25 +23,7 @@ export function StudentInfo() {
           <DrawerDescription>Student information</DrawerDescription>
         </DrawerHeader>
         <div className="w-full flex flex-col items-center justify-center gap-4">
-          <AttachmentGroup className="w-full">
-            {images.map((image) => (
-              <Attachment key={image.name} orientation="vertical">
-                <AttachmentMedia variant="image">
-                  <img src={image.src} alt={image.alt} />
-                </AttachmentMedia>
-                <AttachmentTrigger
-                  render={
-                    <a
-                      href={image.src}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Open ${image.name}`}
-                    />
-                  }
-                />
-              </Attachment>
-            ))}
-          </AttachmentGroup>
+          <img src="/pic_me.jpg" alt="test" className="rounded-lg shadow-md " />
           <div className="p-4">
             <DrawerHeader>Nawapat Prompong</DrawerHeader>
             <DrawerDescription>

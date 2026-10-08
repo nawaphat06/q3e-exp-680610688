@@ -43,14 +43,9 @@ export default function App() {
                 <ItemList />
               </TabsContent>
               <TabsContent value="category">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>By Category</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CategoryCards />
-                  </CardContent>
-                </Card>
+                <CategoryCards />
+                <br></br>
+                <ItemList />
               </TabsContent>
             </Tabs>
           </div>
