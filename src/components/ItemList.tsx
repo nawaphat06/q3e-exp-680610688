@@ -13,7 +13,6 @@ import {
 import { Trash } from "lucide-react";
 
 export function ItemList() {
-  // Destructure expenses and your deletion method from the store
   const { expenses, deleteExpense } = useItemStore();
 
   return (

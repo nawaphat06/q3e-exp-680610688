@@ -14,7 +14,6 @@ import { Label } from "@/components/ui/label";
 
 export function AddItemDialog() {
   const addExpense = useItemStore((state) => state.addExpense);
-
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
@@ -24,7 +23,10 @@ export function AddItemDialog() {
     e.preventDefault();
     if (!title || !amount) return;
 
-    // addExpense(title, parseFloat(amount), category);
+    // Call state store action
+    addExpense(title, parseFloat(amount), category);
+
+    // Reset fields & Close dialog
     setTitle("");
     setAmount("");
     setOpen(false);
@@ -32,15 +34,17 @@ export function AddItemDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={<Button className="bg-indigo-500 hover:bg-indigo-600" />}
-      >
-        + Add Expense
+      <DialogTrigger asChild>
+        <Button className="bg-indigo-500 hover:bg-indigo-600">
+          + Add Expense
+        </Button>
       </DialogTrigger>
+
       <DialogContent>
         <DialogHeader>
           <DialogTitle>New Expense</DialogTitle>
         </DialogHeader>
+
         <form onSubmit={handleSubmit} className="space-y-5 mt-4">
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="title">Title</Label>
@@ -52,18 +56,20 @@ export function AddItemDialog() {
               required
             />
           </div>
+
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="amount">Amount (฿)</Label>
             <Input
               id="amount"
               type="number"
-              step="1"
+              step="0.01"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="0.00"
               required
             />
           </div>
+
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="category">Category</Label>
             <select
@@ -81,6 +87,7 @@ export function AddItemDialog() {
               ))}
             </select>
           </div>
+
           <Button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600"

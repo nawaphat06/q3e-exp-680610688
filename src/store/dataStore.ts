@@ -10,7 +10,7 @@ interface ItemState {
     category: Expense["category"],
   ) => void;
   // deleteExpense: (id: string) => void;
-  deleteExpense: (id: string) => void; 
+  deleteExpense: (id: string) => void;
 }
 
 export const useItemStore = create<ItemState>()(
@@ -74,12 +74,14 @@ export const useItemStore = create<ItemState>()(
             ...state.expenses,
           ],
         })),
-      deleteExpense: (id) => 
-        set((state) => ({ expenses: state.expenses.filter((item) => item.id !== id) })),
+      deleteExpense: (id) =>
+        set((state) => ({
+          expenses: state.expenses.filter((expense) => expense.id !== id),
+        })),
     }),
     {
       // Unique key name for the localStorage entry
-      name: "app-storage",
+      name: "exp-680610688",
     },
   ),
 );
